@@ -5,7 +5,9 @@ import validator from 'validator';
 Object.assign(Validation.rules, {
     required: {
         rule: value => {
-            return value.trim();
+            return typeof value === "string" ?
+                value.trim().length > 0 :
+                value.length > 0;
         },
         hint: value => {
             return <span className='form-error is-visible'>Required</span>
